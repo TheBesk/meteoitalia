@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Box, Typography, Chip, Card, CardContent, CardMedia } from "@mui/material";
 
-function Weather({ lat, lon, data }) {
-
+function Weather({ lat, lon }) {
   const [result, setResult] = useState([]);
 
   useEffect(() => {
@@ -16,23 +16,71 @@ function Weather({ lat, lon, data }) {
     };
 
     fetchData();
-  }, [lat, lon, data]);
+  }, [lat, lon]);
 
   return (
-    <div>
-      <h2>Previsioni</h2>
-      <ul>
+    <Box
+      sx={{
+        background: "transparent",
+        padding: "1rem",
+        borderRadius: "4px",
+        marginTop: "1rem",
+        width: "60%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        margin: "0 auto",
+      }}
+    >
+ 
+ <ul style={{ listStyleType: "none", padding: 0, textAlign: "center" }}>
         {result.slice(0, 5).map((item, index) => (
-          <li key={index}>
-            <p>Data: {item.localDate.substring(8, 10)}-{item.localDate.substring(5, 7)}-{item.localDate.substring(0, 4)}</p>
-            <p>Temperatura Massima: {item.maxCelsius !== "-" ? `${item.maxCelsius}°C` : "-"}</p>
-            <p>Temperatura Minima: {item.minCelsius !== "-" ? `${item.minCelsius}°C` : "-"}</p>
-            
-            <img src={process.env.PUBLIC_URL + `./icons/${item.icon}.png`} alt={`${item.icon}`} width="100" height="100" />
+          <li
+            key={index}
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+              marginBottom: "1rem",
+            }}
+          >
+           <Card sx={{ maxWidth: 400 }}>
+              <CardContent style={{ display: "flex", justifyContent: "space-between" }}>
+                <div>
+                  <Typography variant="body1" component="p" gutterBottom>
+                    {item.localDate.substring(8, 10)}-{item.localDate.substring(5, 7)}-{item.localDate.substring(0, 4)}
+                  </Typography>
+                  <Typography variant="body1" component="p" gutterBottom>
+                    {" "}
+                    {item.maxCelsius !== "-" ? (
+                      <Chip label={`${item.maxCelsius}°C`} color="error" />
+                    ) : (
+                      "-"
+                    )}
+                  </Typography>
+                  <Typography variant="body1" component="p" gutterBottom>
+                    {" "}
+                    {item.minCelsius !== "-" ? (
+                      <Chip label={`${item.minCelsius}°C`} color="primary" />
+                    ) : (
+                      "-"
+                    )}
+                  </Typography>
+                </div>
+                <CardMedia
+                  component="img"
+                  image={process.env.PUBLIC_URL + `./icons/${item.icon}.png`}
+                  alt={item.icon}
+                  style={{ width: 100, height: 100, marginLeft: "1rem" }}
+                />
+              </CardContent>
+            </Card>
           </li>
         ))}
       </ul>
-    </div>
+    </Box>
   );
 }
 
