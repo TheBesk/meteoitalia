@@ -58,7 +58,7 @@ function App() {
       background: "linear-gradient(to bottom right, #f2f7f8, #bce7e9)",
       padding: "1rem",
     }}>
-      <Typography variant="h3" sx={{ textAlign: "center" }}>Meteo Italia 🇮🇹</Typography>
+      <a style={{textDecoration: 'none',color: 'black'}} href="/"><Typography variant="h3" sx={{ textAlign: "center" }}>Meteo Italia 🇮🇹</Typography></a>
       <Box component="form" onSubmit={handleSubmit} sx={{ marginTop: "1rem" }}>
         <Grid container spacing={2} alignItems="center" justifyContent="center">
           <Grid item xs={12} sm={8} md={6}>

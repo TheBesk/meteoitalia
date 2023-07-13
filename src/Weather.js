@@ -53,7 +53,7 @@ function Weather({ lat, lon }) {
                     {item.localDate.substring(8, 10)}-{item.localDate.substring(5, 7)}-{item.localDate.substring(0, 4)}
                   </Typography>
                   <Typography variant="body1" component="p" gutterBottom>
-                    {" "}
+                    Temp. max:{" "}
                     {item.maxCelsius !== "-" ? (
                       <Chip label={`${item.maxCelsius}°C`} color="error" />
                     ) : (
@@ -61,7 +61,7 @@ function Weather({ lat, lon }) {
                     )}
                   </Typography>
                   <Typography variant="body1" component="p" gutterBottom>
-                    {" "}
+                    Temp. min:{" "}
                     {item.minCelsius !== "-" ? (
                       <Chip label={`${item.minCelsius}°C`} color="primary" />
                     ) : (

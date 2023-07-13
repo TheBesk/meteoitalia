@@ -22,18 +22,12 @@ function Cities({ data, onItemClick }) {
         <Table>
           <TableBody>
             {visibleData.map((item, index) => (
-              <TableRow key={index}>
-                <TableCell>
-                  <a
-                    href="#"
-                    onClick={() => onItemClick(item.lat, item.lon)}
-                    style={{ textDecoration: "none", color: "#333" }}
-                  >
-                    {item.display_name
-                      .replace(item.county, "")
-                      .replace(",", "")
-                      .replace(", ,", ",")}
-                  </a>
+              <TableRow key={index} onClick={() => onItemClick(item.lat, item.lon)}  style={{ cursor: "pointer" }}>
+                <TableCell component="th" scope="row">
+                  {item.display_name
+                    .replace(item.county, "")
+                    .replace(",", "")
+                    .replace(", ,", ",")}
                 </TableCell>
               </TableRow>
             ))}
