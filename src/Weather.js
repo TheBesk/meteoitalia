@@ -46,8 +46,8 @@ function Weather({ lat, lon }) {
               marginBottom: "1rem",
             }}
           >
-           <Card sx={{ maxWidth: 400 }}>
-              <CardContent style={{ display: "flex", justifyContent: "space-between" }}>
+           <Card sx={{ maxWidth: 500 }}>
+              <CardContent style={{ display: "flex", justifyContent: "space-between", backgroundColor:"#c3eaf2" }}>
                 <div>
                   <Typography variant="body1" component="p" gutterBottom>
                     {item.localDate.substring(8, 10)}-{item.localDate.substring(5, 7)}-{item.localDate.substring(0, 4)}
@@ -71,9 +71,9 @@ function Weather({ lat, lon }) {
                 </div>
                 <CardMedia
                   component="img"
-                  image={process.env.PUBLIC_URL + `./icons/${item.icon}.png`}
+                  image={process.env.PUBLIC_URL + `./icons2/${item.icon}.png`}
                   alt={item.icon}
-                  style={{ width: 100, height: 100, marginLeft: "1rem" }}
+                  style={{ width: 80, height: 80, marginLeft: "1rem", objectFit: 'contain' }}
                 />
               </CardContent>
             </Card>

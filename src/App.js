@@ -13,10 +13,11 @@ function App() {
 
   const fetchData = async () => {
     try {
-      const result = await axios.get(`http://localhost:3001/api/geocoder?q=${searchQuery}`);
+      if(searchQuery)
+      {const result = await axios.get(`http://localhost:3001/api/geocoder?q=${searchQuery}`);
       setData(result.data.results);
       setSelectedItem(null);
-      setWeatherData(null);
+      setWeatherData(null);}
     } catch (error) {
       console.error(error);
     }
@@ -55,7 +56,7 @@ function App() {
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
-      background: "linear-gradient(to bottom right, #f2f7f8, #bce7e9)",
+      background: "linear-gradient(to bottom right, #247def, #78e7fe)",
       padding: "1rem",
     }}>
       <a style={{textDecoration: 'none',color: 'black'}} href="/"><Typography variant="h3" sx={{ textAlign: "center" }}>Meteo Italia 🇮🇹</Typography></a>
